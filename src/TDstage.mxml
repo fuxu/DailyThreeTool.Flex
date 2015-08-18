@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	 layout="absolute"
+	 xmlns:local="*"
+	 width="540" height="520"
+ creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import dickfu.td.common.ResType;
+			import dickfu.td.view.StageBox;
+			private var _directStage:StageBox;
+			private var _groupStage:StageBox;
+			private function init():void{
+				_directStage = new StageBox(ResType.DIRECT);
+				_groupStage  = new StageBox(ResType.GROUP);
+				mainStage.addChild(_directStage);
+				bb.selectedIndex = 0;
+				mainStage.addChild(_groupStage);
+			}
+		]]>
+	</mx:Script>
+	<mx:Style source="main.css" />
+	<mx:VBox width="100%" paddingLeft="0" paddingRight="0" horizontalCenter="0">
+	<mx:ApplicationControlBar width="90%" styleName="storeControlBar">
+		<mx:Image source="assets/logo.png" />
+		<mx:ToggleButtonBar id="bb" height="100%" styleName="storeButtonBar" dataProvider="{mainStage}" />
+		<mx:Spacer width="10" />
+		<local:RSFButton />
+	</mx:ApplicationControlBar>
+	<mx:ViewStack width="100%" height="100%" id="mainStage">
+	</mx:ViewStack>
+	</mx:VBox>
+</mx:Application>

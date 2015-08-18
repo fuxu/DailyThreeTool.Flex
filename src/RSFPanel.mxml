@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	 paddingLeft="20"
+	 verticalAlign="middle"
+	 creationComplete="init()">
+	 <mx:Script>
+	 	<![CDATA[
+	 		import dickfu.td.common.RSFSet;
+	 		import mx.controls.Alert;
+	 		private var rsf:RSFSet = RSFSet.getInstance();
+	 		private function init():void {
+	 			repeatedNum.text = rsf.repeated.toString();
+	 			separatedNum.text = rsf.separated.toString();
+	 			finalNum.text = rsf.final.toString();
+	 		}
+	 		private function setNums():void{
+	 			var r:Array = repeatedNum.text.split(","),
+	 			s:Array = separatedNum.text.split(","),
+	 			f:Array = finalNum.text.split(",");
+	 			if(!rsf.assign(r, s, f)) {
+	 				Alert.show("复隔中码设置错误!");
+	 			}
+	 			init();
+	 		}
+	 	]]>
+	 </mx:Script>
+<mx:Label text="复码 : " />
+<mx:TextInput id="repeatedNum" />
+<mx:Label text="隔码 : "	/>
+<mx:TextInput styleName="glass" id="separatedNum" />
+<mx:Label text="中码 : "	/>
+<mx:TextInput styleName="glass" id="finalNum" />
+<mx:Button styleName="glass" label="设定复隔中码" click="setNums()" />
+</mx:HBox>

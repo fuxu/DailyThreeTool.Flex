@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Button xmlns:mx="http://www.adobe.com/2006/mxml"
+	paddingLeft="10"
+	creationComplete="init()" fontWeight="normal">
+	<mx:Script>
+		<![CDATA[
+			import dickfu.td.common.RSFSet;
+			private var rsf:RSFSet = RSFSet.getInstance();
+			
+	 		private function init():void {
+	 			var res:Array = [rsf.repeated.toString(),rsf.separated.toString(),rsf.final.toString()];
+	 			this.res = res;
+	 		}
+	 		
+	 		private function set res(res:Array):void {
+	 			var text:String = "复码:" + res[0];
+	 			text += "隔码:" + res[1];
+	 			text += "中码:" + res[2];
+	 			this.label = text;
+	 		}
+		]]>
+	</mx:Script>
+</mx:Button>
